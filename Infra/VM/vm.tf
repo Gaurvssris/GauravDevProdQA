@@ -22,8 +22,8 @@ resource "azurerm_virtual_machine" "VMgaurav" {
   }
   os_profile {
     computer_name  = "hostname"
-    admin_username = "testadmin"
-    admin_password = "Password1234!"
+    admin_username = data.azurerm_key_vault_secret.kv1.value
+    admin_password = data.azurerm_key_vault_secret.kv2.value
   }
   os_profile_linux_config {
     disable_password_authentication = false
@@ -36,4 +36,15 @@ data "azurerm_network_interface" "dataNIC" {
   name                = "NICgaurav"
   resource_group_name = "gauravvvs77"
 }
-
+data "azurerm_key_vault" "keyvaultgaurav" {
+  name                = "kvgauravssris"
+  resource_group_name = "gauravvv"
+}
+data "azurerm_key_vault_secret" "kv1" {
+  name         = "kvsecid"
+  key_vault_id = data.azurerm_key_vault.keyvaultgaurav.id
+}
+data "azurerm_key_vault_secret" "kv2" {
+  name         = "kvpwd"
+  key_vault_id = data.azurerm_key_vault.keyvaultgaurav.id
+}

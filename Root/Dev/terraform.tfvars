@@ -18,7 +18,7 @@ newRg = {
 }
 newStrg = {
     Storage1= {
-        name = "storagegauravji123"
+        name = "storagegauravji1234"
  xyz = "gauravvvs77"
  location = "centralindia"
     }
