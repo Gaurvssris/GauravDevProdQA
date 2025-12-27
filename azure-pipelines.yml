@@ -9,6 +9,7 @@ pool:
 
 steps:
   - task: TerraformTask@5
+    displayName: terraform init  
     inputs:
       provider: 'azurerm'
       command: 'init'
@@ -19,6 +20,7 @@ steps:
       backendAzureRmKey: 'Terraformtfstate'
 
   - task: TerraformTask@5
+    displayName: terraform plan
     inputs:
       provider: 'azurerm'
       command: 'plan'
@@ -26,8 +28,16 @@ steps:
       environmentServiceNameAzureRM: 'EnvironmentDevProdQA'
 
   - task: TerraformTask@5
+    displayName: terraform apply
     inputs:
       provider: 'azurerm'
       command: 'apply'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/Root/Dev'
+      environmentServiceNameAzureRM: 'EnvironmentDevProdQA'
+  - task: TerraformTask@5
+    displayName: terraform destroy
+    inputs:
+      provider: 'azurerm'
+      command: 'destroy'
       workingDirectory: '$(System.DefaultWorkingDirectory)/Root/Dev'
       environmentServiceNameAzureRM: 'EnvironmentDevProdQA'
