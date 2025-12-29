@@ -18,13 +18,4 @@ steps:
       backendAzureRmContainerName: 'gaurav85container'
       backendAzureRmKey: 'Terraformtfstate'
 
-  - task: TerraformTask@5
-    displayName: terraform plan 
-    inputs:
-      provider: 'azurerm'
-      command: 'plan'
-      workingDirectory: '$(System.DefaultWorkingDirectory)/Roor/Prod'
-      backendServiceArm: 'EnvironmentDevProdQA'
-      backendAzureRmStorageAccountName: 'gaurav85strg'
-      backendAzureRmContainerName: 'gaurav85container'
-      backendAzureRmKey: 'Terraformtfstate'
+ 
