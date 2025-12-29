@@ -23,3 +23,7 @@ steps:
       provider: 'azurerm'
       command: 'plan'
       workingDirectory: '$(System.DefaultWorkingDirectory)/Roor/Prod'
+      backendServiceArm: 'EnvironmentDevProdQA'
+      backendAzureRmStorageAccountName: 'gaurav85strg'
+      backendAzureRmContainerName: 'gaurav85container'
+      backendAzureRmKey: 'Terraformtfstate'
