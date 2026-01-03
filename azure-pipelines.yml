@@ -22,4 +22,6 @@ steps:
     inputs:
       provider: 'azurerm'
       command: 'plan'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/Root/Prod'
       environmentServiceNameAzureRM: 'EnvironmentDevProdQA'
+      environmentAzureRmUseIdTokenGeneration: true
