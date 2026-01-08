@@ -1,0 +1,28 @@
+
+trigger:
+- main
+
+pool:
+  name: DevProdQApool
+
+
+steps:
+  - task: TerraformTask@5
+    displayName: terraform init  
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/Root/Prod'
+      backendServiceArm: 'EnvironmentDevProdQA'
+      backendAzureRmStorageAccountName: 'gaurav85strg'
+      backendAzureRmContainerName: 'gaurav85container'
+      backendAzureRmKey: 'Terraformtfstate'
+ 
+  - task: TerraformTask@5
+    displayName: terraform plan 
+    inputs:
+      provider: 'azurerm'
+      command: 'plan'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/Root/Prod'
+      environmentServiceNameAzureRM: 'EnvironmentDevProdQA'
+      environmentAzureRmUseIdTokenGeneration: true
